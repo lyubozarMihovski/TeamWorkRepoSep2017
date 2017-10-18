@@ -41,9 +41,10 @@
     ];
 
     // User login
-    $.mockjax(function (requestSettings) {
-        if (requestSettings.url === "https://mock.backend.com/user/kid_rk/login") {
-            return {
+        $.mockjax(function (requestSettings) {
+            if (requestSettings.url === "https://mock.api.com/user/kid_rk/login") {
+                return {
+        
                 response: function (origSettings) {
                     if (requestSettings.headers["Authorization"] === "Basic a2lkX3JrOjczNjgwNGE2Njg=") {
                         let target = users.filter(u => u.username === requestSettings.data.username && u.password === requestSettings.data.password);
@@ -64,9 +65,9 @@
 
     // User create
     $.mockjax(function (requestSettings) {
-        if (requestSettings.url === "https://mock.backend.com/user/kid_rk/" &&
+        if (requestSettings.url === "https://mock.api.com/user/kid_rk/" &&
             requestSettings.method === "POST") {
-            return {
+            return {    
                 response: function (origSettings) {
                     if (requestSettings.headers["Authorization"] === "Basic a2lkX3JrOjczNjgwNGE2Njg=") {
                         let data = requestSettings.data;
